@@ -2,7 +2,7 @@
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ThreadValidation, CommentValidation } from "@/lib/validations/thread";
+import { ThreadValidation } from "@/lib/validations/thread";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -12,14 +12,10 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
 import { z } from "zod";
-import Image from "next/image";
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 import { Textarea } from "@/components/ui/textarea";
-import { isBase64Image } from "@/lib/utils";
 import { useUploadThing } from "@/lib/uploadthing";
-import { updateUser } from "@/lib/actions/user.actions";
 import { usePathname, useRouter } from "next/navigation";
 import { createThread } from "@/lib/actions/thread.actions";
 
@@ -36,8 +32,6 @@ interface Props {
 }
 
 const PostThread = ({ userId }: { userId: string }) => {
-  const [files, setFiles] = useState<File[]>([]);
-  const { startUpload } = useUploadThing("media");
   const router = useRouter();
   const pathname = usePathname();
 
