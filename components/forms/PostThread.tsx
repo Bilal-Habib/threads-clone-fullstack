@@ -13,9 +13,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { z } from "zod";
-import { useState } from "react";
 import { Textarea } from "@/components/ui/textarea";
-import { useUploadThing } from "@/lib/uploadthing";
 import { usePathname, useRouter } from "next/navigation";
 import { createThread } from "@/lib/actions/thread.actions";
 
