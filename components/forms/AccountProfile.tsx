@@ -52,7 +52,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
 
   const handleImage = (
     e: ChangeEvent<HTMLInputElement>,
-    fieldChange: (value: string) => void
+    fieldChange: (value: string) => void,
   ) => {
     e.preventDefault();
 

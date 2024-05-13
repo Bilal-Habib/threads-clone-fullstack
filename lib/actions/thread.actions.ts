@@ -4,7 +4,6 @@ import { revalidatePath } from "next/cache";
 import Thread from "../models/thread.model";
 import User from "../models/user.model";
 import { connectToDB } from "../mongoose";
-import path from "path";
 
 interface Params {
   text: string;
@@ -114,7 +113,7 @@ export async function addCommentToThread(
   threadId: string,
   commentText: string,
   userId: string,
-  path: string
+  path: string,
 ) {
   connectToDB();
 

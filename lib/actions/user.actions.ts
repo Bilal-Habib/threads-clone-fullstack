@@ -35,7 +35,7 @@ export const updateUser = async ({
         image,
         onboarded: true,
       },
-      { upsert: true }
+      { upsert: true },
     );
 
     if (path === "/profile/edit") {
