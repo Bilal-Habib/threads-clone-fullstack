@@ -1,9 +1,18 @@
 import AccountProfile from "@/components/forms/AccountProfile";
+import { fetchUser } from "@/lib/actions/user.actions";
 import { currentUser } from "@clerk/nextjs";
+import { redirect } from "next/navigation";
 
 async function Page() {
   const user = await currentUser();
-  const userInfo = {}
+  if (!user) {
+    return null;
+  }
+
+  const userInfo = await fetchUser(user.id);
+  if (userInfo?.onboarded) {
+    redirect("/onboarding");
+  }
 
   const userData = {
     id: user?.id,
@@ -11,8 +20,8 @@ async function Page() {
     username: userInfo?.username || user?.username,
     name: userInfo?.name || user?.firstName || "",
     bio: userInfo?.bio || "",
-    image: userInfo?.image || user?.imageUrl
-  }
+    image: userInfo?.image || user?.imageUrl,
+  };
 
   return (
     <main className="mx-auto flex max-w-3xl flex-col justify-start px-10 py-20">
@@ -22,7 +31,7 @@ async function Page() {
       </p>
 
       <main className="mt-9 bg-dark-2 p-10">
-        <AccountProfile user={userData} btnTitle="Continue"/>
+        <AccountProfile user={userData} btnTitle="Continue" />
       </main>
     </main>
   );
