@@ -5,7 +5,6 @@ import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
 export default async function Home() {
-  const result = await fetchPosts(1, 30);
 
   const user = await currentUser();
   if (!user) return null;
@@ -15,6 +14,7 @@ export default async function Home() {
     redirect("/onboarding");
   }
 
+  const result = await fetchPosts(1, 30);
   console.log(result);
 
   return (
