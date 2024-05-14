@@ -1,10 +1,4 @@
-import UserCard from "@/components/cards/UserCard";
-import ProfileHeader from "@/components/shared/ProfileHeader";
-import ThreadsTab from "@/components/shared/ThreadsTab";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { profileTabs } from "@/constants";
 import {
-  fetchAllUsers,
   fetchUser,
   getReplies,
 } from "@/lib/actions/user.actions";

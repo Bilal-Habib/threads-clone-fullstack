@@ -14,7 +14,7 @@ export async function createCommunity(
   username: string,
   image: string,
   bio: string,
-  createdById: string, // Change the parameter name to reflect it's an id
+  createdById: string // Change the parameter name to reflect it's an id
 ) {
   try {
     connectToDB();
@@ -35,7 +35,11 @@ export async function createCommunity(
       createdBy: user._id, // Use the mongoose ID of the user
     });
 
+    console.log("TRYING TO CREATE A COMMUNITY");
+
     const createdCommunity = await newCommunity.save();
+
+    console.log("CREATED COMMUNITYYYYYYYYYYYYYYYY");
 
     // Update User model
     user.communities.push(createdCommunity._id);
@@ -161,7 +165,7 @@ export async function fetchCommunities({
 
 export async function addMemberToCommunity(
   communityId: string,
-  memberId: string,
+  memberId: string
 ) {
   try {
     connectToDB();
@@ -203,7 +207,7 @@ export async function addMemberToCommunity(
 
 export async function removeUserFromCommunity(
   userId: string,
-  communityId: string,
+  communityId: string
 ) {
   try {
     connectToDB();
@@ -211,7 +215,7 @@ export async function removeUserFromCommunity(
     const userIdObject = await User.findOne({ id: userId }, { _id: 1 });
     const communityIdObject = await Community.findOne(
       { id: communityId },
-      { _id: 1 },
+      { _id: 1 }
     );
 
     if (!userIdObject) {
@@ -225,13 +229,13 @@ export async function removeUserFromCommunity(
     // Remove the user's _id from the members array in the community
     await Community.updateOne(
       { _id: communityIdObject._id },
-      { $pull: { members: userIdObject._id } },
+      { $pull: { members: userIdObject._id } }
     );
 
     // Remove the community's _id from the communities array in the user
     await User.updateOne(
       { _id: userIdObject._id },
-      { $pull: { communities: communityIdObject._id } },
+      { $pull: { communities: communityIdObject._id } }
     );
 
     return { success: true };
@@ -246,7 +250,7 @@ export async function updateCommunityInfo(
   communityId: string,
   name: string,
   username: string,
-  image: string,
+  image: string
 ) {
   try {
     connectToDB();
@@ -254,7 +258,7 @@ export async function updateCommunityInfo(
     // Find the community by its _id and update the information
     const updatedCommunity = await Community.findOneAndUpdate(
       { id: communityId },
-      { name, username, image },
+      { name, username, image }
     );
 
     if (!updatedCommunity) {

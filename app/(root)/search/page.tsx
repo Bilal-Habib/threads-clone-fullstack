@@ -19,7 +19,6 @@ async function Page() {
     searchString: "",
     pageSize: 25,
   });
-  console.log(allUsers);
 
   return (
     <section>
