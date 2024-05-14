@@ -38,7 +38,7 @@ const ThreadCard = ({
   createdAt,
   comments,
   isComment,
-}: Props) => {  
+}: Props) => {
   return (
     <article
       className={`flex w-full flex-col rounded-xl
@@ -116,9 +116,9 @@ const ThreadCard = ({
         </div>
         {/* TODO: DeleteThread */}
         {/* TODO: show comment logos */}
-        
       </div>
-      {!isComment && community && (
+      {/* uncomment this when community bug is fixed */}
+      {/* {!isComment && community && (
         <Link
           href={`/communities/${community.id}`}
           className="mt-5 flex items-center"
@@ -136,7 +136,7 @@ const ThreadCard = ({
             className="ml-1 rounded-full object-cover"
           />
         </Link>
-      )}
+      )} */}
     </article>
   );
 };
