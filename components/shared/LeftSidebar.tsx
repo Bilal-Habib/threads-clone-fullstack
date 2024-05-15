@@ -25,6 +25,7 @@ const LeftSidebar = () => {
 
           return (
             <Link
+              id={link.label}
               href={link.route}
               key={link.label}
               className={`leftsidebar_link ${isActive && "bg-primary-500"}`}
@@ -43,7 +44,7 @@ const LeftSidebar = () => {
       <div className="mt-10 px-6">
         <SignedIn>
           <SignOutButton signOutCallback={() => router.push("/sign-in")}>
-            <div className="flex cursor-pointer gap-4 p-4">
+            <div id="sign-out-btn" className="flex cursor-pointer gap-4 p-4">
               <Image
                 src="/assets/logout.svg"
                 alt="logout"
