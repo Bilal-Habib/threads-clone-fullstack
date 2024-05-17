@@ -37,6 +37,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## In the env.local file
 
+```
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
 CLERK_SECRET_KEY=
 NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
@@ -47,3 +48,4 @@ MONGODB_URL=
 UPLOADTHING_SECRET=
 UPLOADTHING_APP_ID=
 NEXT_CLERK_WEBHOOK_SECRET=
+```
